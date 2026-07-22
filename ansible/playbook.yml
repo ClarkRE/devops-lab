@@ -1,1 +1,12 @@
-
+---
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install Kubernetes tools
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - kubelet
+        - kubeadm
+        - kubectl
